@@ -47,15 +47,17 @@ public class Reservation {
     }
 
     
-    private static boolean SpotCompatible(String vehicleType, String spotType) {
-        if (vehicleType.equals("bike") && spotType.equals("bike spot")) {
-            return true;
-        } else if (vehicleType.equals("car") && spotType.equals("normal spot")) {
-            return true;
-        } else if (vehicleType.equals("4x4") && spotType.equals("large spot")) {
-            return true;
+  private static boolean isSpotCompatible(String vehicleType, String spotType) {
+        switch (vehicleType) {
+            case "bike":
+                return spotType.equals("bike spot");
+            case "car":
+                return spotType.equals("normal spot");
+            case "4x4":
+                return spotType.equals("large spot");
+            default:
+                return false;
         }
-        return false;
     }
 
     // Make Reservation
